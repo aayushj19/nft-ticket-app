@@ -46,7 +46,7 @@ npm install
 ```bash
 npm run dev
 ```
-4.Live Demo
+4. Live Demo
 [https://nft-mining.vercel.app/]
 
 ### 🔐 Wallet & Network Requirements
@@ -57,5 +57,4 @@ npm run dev
 ### 📄 License
 MIT License
 
- ## Author:- Aayush[http://github.com/aayushj19]
->>>>>>> 7d567fdf40adb75abffe75765ed729926c51221e
+ ## Author:- Aayush [http://github.com/aayushj19]
