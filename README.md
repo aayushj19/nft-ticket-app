@@ -57,4 +57,4 @@ npm run dev
 ### 📄 License
 MIT License
 
- ## Author:- Aayush [http://github.com/aayushj19]
+ ## Author:- Aayush [www.linkedin.com/in/aayushj19]
