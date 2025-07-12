@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { ethers, BrowserProvider } from 'ethers';
 
-const contractAddress = '0xf8B036068DF132e26b6f2bba351F5c3bCbCC9f78'; // Your deployed contract address
-const tokenURI = 'ipfs://bafkreignlbdjw4ysawvjqskr7v3qbre6nw6crafc6f4yuf7zvsxm5doyqq'; // Your IPFS metadata CID
+const contractAddress = '0xf8B036068DF132e26b6f2bba351F5c3bCbCC9f78'; // Deployed contract on Sepolia
+const tokenURI = 'ipfs://bafkreignlbdjw4ysawvjqskr7v3qbre6nw6crafc6f4yuf7zvsxm5doyqq'; // Metadata CID
 
 const abi = [
   "function mintTokens(address to, string memory tokenURI) external"
@@ -27,13 +27,13 @@ export default function Home() {
           method: 'eth_requestAccounts',
         });
         setWalletAddress(accounts[0]);
-        setStatus("Wallet Connected");
+        setStatus("✅ Wallet Connected");
       } catch (err) {
         console.error(err);
-        setStatus(" Wallet connection failed.");
+        setStatus("❌ Wallet connection failed.");
       }
     } else {
-      alert("MetaMask not installed");
+      alert("🦊 MetaMask is not installed. Please install it to use this DApp.");
     }
   };
 
@@ -56,16 +56,16 @@ export default function Home() {
       const tx = await contract.mintTokens(walletAddress, tokenURI);
       await tx.wait();
 
-      setStatus("NFT Ticket Minted! Check your Wallet");
-    } catch (err: any) {
+      setStatus("✅ NFT Ticket Minted! Check your wallet.");
+    } catch (err) {
       console.error(err);
-      setStatus(" Minting failed: " + (err.reason || err.message));
+      setStatus("❌ Minting failed.");
     }
   };
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center gap-6 p-6">
-      <h1 className="text-3xl font-bold">🎟️ NFT Ticketing DApp</h1>
+      <h1 className="text-3xl font-bold text-center">🎟️ NFT Ticketing DApp</h1>
 
       <button
         onClick={connectWallet}
@@ -84,7 +84,6 @@ export default function Home() {
       </button>
 
       {status && <p className="text-lg text-center">{status}</p>}
-
     </main>
   );
 }
